@@ -19,7 +19,7 @@ export const App = ({ initialStickers }) => {
   const [contacts, setContacts] = useState(() => {
     return JSON.parse(localStorage.getItem('contact')) ?? initialStickers;
   });
-  const [filter, setFilter] = useState('');
+  const [visibel, setVisibel] = useState('');
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
@@ -47,7 +47,7 @@ export const App = ({ initialStickers }) => {
   };
 
   const changeFilter = e => {
-    setFilter({ filter: e.currentTarget.value });
+    setVisibel({ visibel: e.currentTarget.value });
   };
 
   const deleteContact = contactId => {
@@ -58,12 +58,15 @@ export const App = ({ initialStickers }) => {
     setShowModal(!showModal);
   };
 
-  const lenghtContactts = contacts.length;
-  const normalizeFilter = filter.toLowerCase();
-  const visibleContact = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(normalizeFilter)
-  );
+  console.log(contacts);
 
+  const lenghtContactts = contacts.length;
+
+  const visibleContact = contacts.filter(contact =>
+    contact.name.toLowerCase().includes(visibel.toLowerCase())
+  );
+  console.log(visibleContact);
+  // const normalizeFilter = filter.toLowerCase();
   return (
     <>
       <Container>
@@ -81,7 +84,7 @@ export const App = ({ initialStickers }) => {
         <WrapperContact>
           <p>Total contacts: {lenghtContactts}</p>
           <Title>Contacts</Title>
-          <Filter value={filter} onChange={changeFilter} />
+          <Filter value={visibel} onChange={changeFilter} />
           {contacts.length > 0 && (
             <List items={visibleContact} onDeleteContact={deleteContact} />
           )}
