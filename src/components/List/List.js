@@ -3,6 +3,7 @@ import { ListStyle, ItemStyle } from './List.styled';
 import PropTypes from 'prop-types';
 
 export const List = ({ items, onDeleteContact }) => {
+  console.log(items);
   return (
     <ListStyle>
       {items.map((item, id) => (
