@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { ContactForm } from '../Form/Form';
 import { List } from '../List/List';
 import { nanoid } from 'nanoid';
@@ -14,18 +14,20 @@ import { GlobalStyle } from '../GlobalStyles.styled';
 import { OpenModal } from 'components/Modal/Modal';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useLocalStorage } from '../hooks/useLocal';
 
 export const App = ({ initialStickers }) => {
-  const [contacts, setContacts] = useState(() => {
-    console.log(initialStickers);
-    return JSON.parse(localStorage.getItem('contact')) ?? initialStickers;
-  });
+  const [contacts, setContacts] = useLocalStorage('contact', initialStickers);
   const [visibel, setVisibel] = useState('');
   const [showModal, setShowModal] = useState(false);
 
-  useEffect(() => {
-    window.localStorage.setItem('contact', JSON.stringify(contacts));
-  }, [contacts]);
+  // const [contacts, setContacts] = useState(() => {
+  //   console.log(initialStickers);
+  //   return JSON.parse(localStorage.getItem('contact')) ?? initialStickers;
+  // });
+  // useEffect(() => {
+  //   window.localStorage.setItem('contact', JSON.stringify(contacts));
+  // }, [contacts]);
 
   const addContact = ({ name, number }) => {
     if (

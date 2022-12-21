@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Field } from 'formik';
+// import { Field } from 'formik';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   margin: 0 0 20px 0;
 `;
 
-export const Input = styled(Field)`
+export const Input = styled.input`
   width: 100%;
   padding: 10px;
 `;
