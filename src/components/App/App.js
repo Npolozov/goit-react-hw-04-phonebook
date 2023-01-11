@@ -56,10 +56,12 @@ export const App = ({ initialStickers }) => {
 
   const lenghtContactts = contacts.length;
 
+  const normalizeFilter = visibel.toLowerCase();
+
   const visibleContact = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(visibel.toLowerCase())
+    contact.name.toLowerCase().includes(normalizeFilter)
   );
-  // const normalizeFilter = filter.toLowerCase();
+
   return (
     <>
       <Container>
