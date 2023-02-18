@@ -2,6 +2,7 @@ import { Wrapper, Label, Input } from './Filter.styled';
 import PropTypes from 'prop-types';
 
 export const Filter = ({ value, onChange }) => {
+  console.log(value);
   return (
     <Wrapper>
       <Label>Find contacts by name</Label>
